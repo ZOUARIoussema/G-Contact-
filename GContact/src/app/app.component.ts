@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'GContact';
+
+  contact = {nom:"med",email:"oussema.zouari@esprit.tn"};
 }
