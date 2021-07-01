@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from 'src/service/contact.service';
-import { runInThisContext } from 'vm';
+
  
 
 @Component({
@@ -14,16 +14,18 @@ export class ContactsComponent implements OnInit {
   contact = {name:"med",email:"oussema.zouari@esprit.tn"};
   pagecontact:any;
   motCle:string="";
-  page:number=0;
+  currentPage:number=0;
   size:number=5;
-  pages:Array<number>
+  pages:any;
+
+
 
 
   constructor(private http:HttpClient,private contactS:ContactService) { }
 
   ngOnInit() {
 
-    
+    this.doSearch();
 
   }
 
@@ -31,9 +33,12 @@ export class ContactsComponent implements OnInit {
 
 
 
-    this.contactS.getContact(this.motCle,this.page,this.size).subscribe(
+    this.contactS.getContact(this.motCle,this.currentPage,this.size).subscribe(
 
-      data=>{this.pagecontact=data},
+      data=>{
+        this.pagecontact=data;
+        this.pages=new Array(this.pagecontact.totalPages)
+      },
       err=>{console.log(err)}
       
       
@@ -45,6 +50,13 @@ export class ContactsComponent implements OnInit {
 
   chercher(){
 
+    this.doSearch();
+
+  }
+
+  goToPage(i:number){
+
+    this.currentPage=i;
     this.doSearch();
 
   }

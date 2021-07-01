@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactService } from 'src/service/contact.service';
 import { FormsModule } from '@angular/forms';
+import { NewContactComponent } from './new-contact/new-contact.component';
 
 
  
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     ContactsComponent,
-    AboutComponent
+    AboutComponent,
+    NewContactComponent
   ],
   imports: [
     BrowserModule,

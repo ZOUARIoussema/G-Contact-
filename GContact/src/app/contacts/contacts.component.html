@@ -6,7 +6,7 @@
             <div>
                 <label>Mot cle</label>
                 <input type="text" [(ngModel)]="motCle" />
-                <button class="btn btn-primary"  (click)="chercher()" >Chercher</button>
+                <button class="btn btn-primary" (click)="chercher()">Chercher</button>
             </div>
 
             <table class="table table-striped">
@@ -42,6 +42,15 @@
                 </tr>
 
             </table>
+
+            <div class="container">
+                <ul class="nav nav-pils">
+                    <li [ngClass]="{'active': i==currentPage}" *ngFor="let p of pages; let i=index">
+                        <a class="clickable" (click)="goToPage(i)" >{{i}}</a>
+                    </li>
+                </ul>
+
+            </div>
 
         </div>
 
