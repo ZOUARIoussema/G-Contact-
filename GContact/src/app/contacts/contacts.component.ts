@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Contact } from 'src/model/contact';
 import { ContactService } from 'src/service/contact.service';
 
  
@@ -21,7 +23,7 @@ export class ContactsComponent implements OnInit {
 
 
 
-  constructor(private http:HttpClient,private contactS:ContactService) { }
+  constructor(public http:HttpClient,public contactS:ContactService,public router:Router) { }
 
   ngOnInit() {
 
@@ -58,6 +60,53 @@ export class ContactsComponent implements OnInit {
 
     this.currentPage=i;
     this.doSearch();
+
+  }
+
+
+  onEditContact(id:number){
+
+    this.router.navigate(['edit-contact',id])
+
+
+  }
+
+  onDelete(c:Contact){
+
+
+
+    let confirm=window.confirm('Est vous sure ?');
+
+    if(confirm==true){
+
+
+      this.contactS.deleteContact(c.id).subscribe
+      (
+  
+        data=>{
+  
+          
+          this.pagecontact.content.splice(
+            this.pagecontact.content.indexOf(c),1
+          );
+  
+        },err=>{
+  
+          alert("erreur de suppression !")
+          console.log(err);
+  
+        }
+  
+      )
+  
+
+      
+    }
+
+   
+
+    
+
 
   }
 

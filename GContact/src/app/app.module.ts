@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContactService } from 'src/service/contact.service';
 import { FormsModule } from '@angular/forms';
 import { NewContactComponent } from './new-contact/new-contact.component';
+import { NouveauContactComponent } from './nouveau-contact/nouveau-contact.component';
+import { EditContactComponent } from './edit-contact/edit-contact.component';
 
 
  
@@ -18,7 +20,9 @@ import { NewContactComponent } from './new-contact/new-contact.component';
     AppComponent,
     ContactsComponent,
     AboutComponent,
-    NewContactComponent
+    NewContactComponent,
+    NouveauContactComponent,
+    EditContactComponent
   ],
   imports: [
     BrowserModule,

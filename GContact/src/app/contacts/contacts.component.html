@@ -37,6 +37,19 @@
                     <td> {{c.dateNaissance}} </td>
                     <td> {{c.email}} </td>
                     <td> {{c.tel}} </td>
+                    <td>
+                        <a (click)="onEditContact(c.id)" class="clickable">
+                            Edit
+
+                        </a>
+                    </td>
+
+                    <td>
+                        <a (click)="onDelete(c)" class="clickable">
+                            Delete
+
+                        </a>
+                    </td>
 
 
                 </tr>
@@ -46,7 +59,7 @@
             <div class="container">
                 <ul class="nav nav-pils">
                     <li [ngClass]="{'active': i==currentPage}" *ngFor="let p of pages; let i=index">
-                        <a class="clickable" (click)="goToPage(i)" >{{i}}</a>
+                        <a class="clickable" (click)="goToPage(i)">{{i}}</a>
                     </li>
                 </ul>
 
